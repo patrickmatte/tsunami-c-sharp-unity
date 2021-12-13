@@ -1,0 +1,56 @@
+Base path: /Applications/Unity/Unity.app/Contents
+Cmd: initializeCompiler
+Cmd: translateComputeKernel
+  api=14 insize=10669 outsize=18673 ok=1
+Cmd: translateComputeKernel
+  api=14 insize=5741 outsize=8325 ok=1
+Cmd: compileComputeKernel
+  api=14 insize=9421 outsize=9341 ok=1
+Cmd: translateComputeKernel
+  api=14 insize=9573 outsize=16353 ok=1
+Cmd: compileComputeKernel
+  api=14 insize=1522 outsize=16637 ok=1
+Cmd: translateComputeKernel
+  api=14 insize=16637 outsize=31477 ok=1
+Cmd: translateComputeKernel
+  api=14 insize=1445 outsize=2217 ok=1
+Cmd: compileComputeKernel
+  api=14 insize=15322 outsize=7533 ok=1
+Cmd: compileComputeKernel
+  api=14 insize=15322 outsize=7769 ok=1
+Cmd: compileComputeKernel
+  api=14 insize=15322 outsize=10413 ok=1
+Cmd: compileComputeKernel
+  api=14 insize=15322 outsize=8213 ok=1
+Cmd: compileComputeKernel
+  api=14 insize=15322 outsize=8117 ok=1
+Cmd: compileComputeKernel
+  api=14 insize=15322 outsize=9241 ok=1
+Cmd: compileComputeKernel
+  api=14 insize=15322 outsize=8917 ok=1
+Cmd: compileComputeKernel
+  api=14 insize=15322 outsize=10885 ok=1
+Cmd: translateComputeKernel
+  api=14 insize=6141 outsize=10993 ok=1
+Cmd: translateComputeKernel
+  api=14 insize=6393 outsize=11097 ok=1
+Cmd: translateComputeKernel
+  api=14 insize=7805 outsize=13873 ok=1
+Cmd: translateComputeKernel
+  api=14 insize=8049 outsize=14905 ok=1
+Cmd: translateComputeKernel
+  api=14 insize=6897 outsize=12725 ok=1
+Cmd: translateComputeKernel
+  api=14 insize=8985 outsize=17001 ok=1
+Cmd: translateComputeKernel
+  api=14 insize=9625 outsize=17765 ok=1
+Cmd: translateComputeKernel
+  api=14 insize=11921 outsize=22389 ok=1
+Cmd: translateComputeKernel
+  api=14 insize=12165 outsize=23373 ok=1
+Cmd: initializeCompiler
+Cmd: initializeCompiler
+Cmd: initializeCompiler
+Unhandled exception: Protocol error - unexpected end of data (did the Editor crash?)
+
+Quitting shader compiler process
