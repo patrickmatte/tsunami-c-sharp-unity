@@ -6,26 +6,28 @@ public class Router : EventDispatcher {
 	public static string CHANGE = "change";
 	public static string COMPLETE = "complete";
 
-	public List<Branch> branches;
-	public Branch root;
-	public RouterTransition showTransitions;
-	public RouterTransition hideTransitions;
+	public List<IBranch> branches;
+	public IBranch root;
+	public Dictionary<string, RouterTransition> Transitions = new Dictionary<string, RouterTransition>();
 
 	protected string _location = null;
 	protected bool _inTransition;
 	protected string _interruptLocation = null;
 	protected string _nextLocation;
 
-	public Router(Branch root):base() {
+	public Router(IBranch root):base() {
 		this.root = root;
-		branches = new List<Branch>();
+		branches = new List<IBranch>();
 
-		showTransitions = new RouterTransition(this, "show", _showComplete);
-		showTransitions.tasks.Add( new RouterTask("load", true) );
-		showTransitions.tasks.Add( new RouterTask("show", false) );
+		RouterTransition show = new RouterTransition(this, "show", _showComplete);
+		show.tasks.Add( new RouterTask("load", true) );
+		show.tasks.Add( new RouterTask("show", false) );
 
-		hideTransitions = new RouterTransition(this, "hide", _hideComplete);
-		hideTransitions.tasks.Add( new RouterTask("hide", false) );
+		RouterTransition hide = new RouterTransition(this, "hide", _hideComplete);
+		hide.tasks.Add( new RouterTask("hide", false) );
+
+		Transitions.Add("show", show);
+		Transitions.Add("hide", hide);
 	}
 
 	public string location {
@@ -34,7 +36,6 @@ public class Router : EventDispatcher {
 		}
 
 		set {
-			//Debug.Log("set location " + value);
 			if (_inTransition) {
 				_interruptLocation = value;
 			} else {
@@ -66,7 +67,7 @@ public class Router : EventDispatcher {
 		
 	public void _startTransitions() {
 		List<string> currentLocationArray = new List<string> ();
-		foreach (Branch branch in branches) {
+		foreach (IBranch branch in branches) {
 			currentLocationArray.Add (branch.slug);
 		}
 
@@ -92,18 +93,18 @@ public class Router : EventDispatcher {
 			
 		int startIndex = breakIndex + 1;
 		int length = branches.Count - startIndex;
-		hideTransitions.branches = branches.Splice (startIndex, length);
-		hideTransitions.branches.Reverse ();
+		Transitions["hide"].branches = branches.Splice (startIndex, length);
+		Transitions["hide"].branches.Reverse ();
 
-		Branch parent = null;
+		IBranch parent = null;
 		if (branches.Count > 0) {
 			parent = branches[branches.Count - 1];
 		}
 
-		List<Branch> newBranches = new List<Branch>();
+		List<IBranch> newBranches = new List<IBranch>();
 		for (int i = breakIndex + 1; i < nextLocationArray.Count; i++) {
 			string slug = nextLocationArray[i];
-			Branch branch = root;
+			IBranch branch = root;
 			if (parent != null) {
 				branch = parent.getBranch (slug);
 			}
@@ -124,9 +125,9 @@ public class Router : EventDispatcher {
 			parent = branch;
 		}
 
-		showTransitions.branches = newBranches;
+		Transitions["show"].branches = newBranches;
 
-		hideTransitions.start();
+		Transitions["hide"].start();
 	}
 
 	public void _hideComplete() {
@@ -134,10 +135,10 @@ public class Router : EventDispatcher {
 			_inTransition = false;
 			location = _interruptLocation;
 		} else {
-			foreach (Branch branch in showTransitions.branches) {
+			foreach (IBranch branch in Transitions["show"].branches) {
 				branches.Add(branch);
 			}
-			showTransitions.start();
+			Transitions["show"].start();
 		}
 	}
 

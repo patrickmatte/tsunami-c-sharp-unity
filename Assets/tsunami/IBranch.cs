@@ -27,9 +27,9 @@ public interface IBranch {
 		set;
 	}
 
-	void show ();
+	Promise show ();
 
-	void hide ();
+	Promise hide ();
 
 	IBranch getBranch (string slug);
 

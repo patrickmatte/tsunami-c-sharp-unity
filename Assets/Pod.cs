@@ -123,7 +123,7 @@ public class GalleryBranch:HomeBranch {
 		return pod.podComponent.galleryComponent.hide();
 	}
 
-    public override Branch getBranch(string slug)
+    public override IBranch getBranch(string slug)
     {
         return new SlideBranch();
     }

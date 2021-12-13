@@ -1,29 +1,29 @@
 ﻿using System.Collections.Generic;
 
-public class Branch {
+public class Branch:IBranch {
 
 	protected Router _router;
-	protected Branch _root;
-	protected Branch _parent;
+	protected IBranch _root;
+	protected IBranch _parent;
 	protected string _slug;
 	protected string _path;
-	public Dictionary<string, Branch> Branches;
+	public Dictionary<string, IBranch> Branches;
 
-	public Branch(Dictionary<string, Branch> branches = null) {
-		Branches = branches ?? new Dictionary<string, Branch>();
+	public Branch(Dictionary<string, IBranch> branches = null) {
+		Branches = branches ?? new Dictionary<string, IBranch>();
 	}
 
-	public virtual Branch root {
+	public virtual IBranch root {
 		get {
 			return _root;
 		}
 
 		set {
-			_root = value;
+			_root = value as Branch;
 		}
 	}
 
-	public virtual Branch parent {
+	public virtual IBranch parent {
 		get {
 			return _parent;
 		}
@@ -63,15 +63,15 @@ public class Branch {
 		}
 	}
 
-	public virtual Branch getBranch(string slug) {
-		Branch branch = Branches[slug];
+	public virtual IBranch getBranch(string slug) {
+		IBranch branch = Branches[slug];
 		if (branch == null)
 		{
 			branch = Branches["*"];
 		}
 		if (branch == null)
 		{
-			branch = new Branch();
+			branch = new Branch() as IBranch;
 		}
 		return branch;
 	}

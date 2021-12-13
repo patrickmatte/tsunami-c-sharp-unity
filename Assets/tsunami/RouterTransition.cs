@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class RouterTransition {
 
-	public List<Branch> branches = new List<Branch>();
+	public List<IBranch> branches = new List<IBranch>();
 	public List<RouterTask> tasks = new List<RouterTask>();
 	public Router router;
 	public string name;
@@ -21,8 +21,8 @@ public class RouterTransition {
 			for (int i = tasks.Count - 1; i > -1; i--) {
 				RouterTask task = tasks[i];
 				task.router = router;
-				task.branches = new List<Branch> ();
-				foreach (Branch branch in branches) {
+				task.branches = new List<IBranch> ();
+				foreach (IBranch branch in branches) {
 					task.branches.Add(branch);
 				}
 				if (nextTask != null) {

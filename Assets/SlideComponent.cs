@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class SlideComponent : MonoBehaviour {
 
-	protected CanvasGroup canvasGroup;
 	public int index;
 	private GameObject _plane;
 	public Action<int> deselectCallback;

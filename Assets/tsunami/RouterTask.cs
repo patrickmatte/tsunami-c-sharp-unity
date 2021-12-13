@@ -4,24 +4,23 @@ using System.Reflection;
 
 public class RouterTask {
 
-	public List<Branch> branches = new List<Branch>();
+	public List<IBranch> branches = new List<IBranch>();
 	public Router router = null;
 	public string name;
 	public bool preload;
 	public Action onComplete;
 
-	private Branch branch;
+	private IBranch branch;
 
 	public RouterTask(string name, bool preload) {
 		this.name = name;
 		this.preload = preload;
-		//this.checkProgressBind = this.checkProgress.bind(this);
 	}
 
 	public void start() {
 		//this.preloader = null;
 		//this.assets = [];
-		if (this.branches.Count > 0) {
+		if (branches.Count > 0) {
 			/*
 			if (this.preload) {
 				for (let i = 0; i < this.branches.length; i++) {
@@ -48,9 +47,9 @@ public class RouterTask {
 				this.startNextBranch();
 			}
 			*/
-			this.startNextBranch();
+			startNextBranch();
 		} else {
-			this.allComplete();
+			allComplete();
 		}
 	}
 
@@ -66,44 +65,29 @@ public class RouterTask {
 	*/
 
 	public void startNextBranch() {
-		this.branch = this.branches[0];
-		//this.branch.onComplete = branchComplete;
-		this.branches.RemoveAt(0);
+		branch = branches[0];
+		branches.RemoveAt(0);
 
 		Type type = typeof(Branch);
 
-		//get the method from a given type definition
-		MethodInfo method = type.GetMethod(this.name);
-
-		//build the parameters array
-		object[] _stringMethodParams = new object[] {};
-
-		//invoke the method
-		Promise promise = (Promise)method.Invoke(this.branch, _stringMethodParams);
-		promise.Then (branchComplete);
-
-		//Action method = this.branch[this.name];
-		//method (branchComplete);
-
-		/*
-		if (method) {
-			method = method.bind(this.branch);
-			let assetList = this.assets.shift();
-			let promise = method(assetList);
-			if (promise) {
-				promise.then(this.branchComplete.bind(this));
+		MethodInfo method = type.GetMethod(name);
+		if (method != null) {
+			//let assetList = this.assets.shift();
+			object[] _stringMethodParams = new object[] { };
+			Promise promise = (Promise)method.Invoke(branch, _stringMethodParams);
+			if (promise != null) {
+				promise.Then(branchComplete);
 			} else {
-				this.branchComplete();
+				branchComplete();
 			}
 		} else {
-			this.branchComplete();
+			branchComplete();
 		}
-		*/
 	}
 
-	protected void branchComplete(object value) {
-		if (this.branches.Count > 0) {
-			this.startNextBranch();
+	protected void branchComplete(object value = null) {
+		if (branches.Count > 0) {
+			startNextBranch();
 		} else {
 			/*
 			if (this.preloader) {
@@ -125,8 +109,8 @@ public class RouterTask {
 	public void allComplete() {
 		//this.assets = null;
 		//this.assetList = null;
-		this.branches = null;
-		this.onComplete();
+		branches = null;
+		onComplete();
 	}
 
 }
