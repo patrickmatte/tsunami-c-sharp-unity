@@ -28,6 +28,8 @@ public class Pod:BaseBranch {
 
 		Branches.Add("home", new HomeBranch());
 		Branches.Add("gallery", new GalleryBranch());
+
+		defaultChild = "home";
 	}
 
 	protected void routerChange(Event e) {
@@ -75,7 +77,7 @@ public class GalleryBranch:HomeBranch {
     }
 
 	protected override void startClickHandler() {
-		router.location = "home";
+		router.location = "";
 	}
 
 	protected override void setButtonText() {

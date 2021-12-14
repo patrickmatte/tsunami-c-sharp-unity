@@ -34,6 +34,8 @@ public interface IBranch {
 		set;
 	}
 
+	Promise load();
+
 	Promise show ();
 
 	Promise hide ();

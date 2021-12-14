@@ -88,7 +88,9 @@ public class SlideComponent : MonoBehaviour {
 			new TweenProp<Vector3>(gameObject.transform, "localScale", gameObject.transform.localScale, localScale, Ease.back.Out, Vector3.LerpUnclamped)
 		});
 
-		return tween.Start();
+		tween.Start();
+
+		return Promise.Resolve();
 	}
 
 	public Promise zoomOut() {
@@ -103,7 +105,9 @@ public class SlideComponent : MonoBehaviour {
 			new TweenProp<Vector3>(gameObject.transform, "localScale", gameObject.transform.localScale, localScale, Ease.back.Out, Vector3.LerpUnclamped),
 		});
 
-		return tween.Start();
+		tween.Start();
+
+		return Promise.Resolve();
 	}
 
 }

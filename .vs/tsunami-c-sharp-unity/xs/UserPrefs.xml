@@ -1,18 +1,13 @@
-﻿<Properties StartupConfiguration="{49431496-BFB7-6754-4C96-D78A8724F768}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/tsunami/RouterTransition.cs">
-    <Files>
-      <File FileName="Assets/tsunami/Router.cs" Line="24" Column="36" />
-      <File FileName="Assets/tsunami/RouterTransition.cs" Line="33" Column="12" />
-    </Files>
+﻿<Properties StartupConfiguration="{83834C7F-8C16-6A4F-5CFC-22D7755CF95B}|">
+  <MonoDevelop.Ide.Workbench>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="tsunami-c-sharp-unity" expanded="True">
+          <Node name="tsunami-c-sharp-unity" expanded="True" selected="True">
             <Node name="Assets" expanded="True">
               <Node name="tsunami" expanded="True">
                 <Node name="animation" expanded="True" />
-                <Node name="utils" expanded="True" />
-                <Node name="RouterTransition.cs" selected="True" />
+                <Node name="promises" expanded="True" />
               </Node>
             </Node>
           </Node>
