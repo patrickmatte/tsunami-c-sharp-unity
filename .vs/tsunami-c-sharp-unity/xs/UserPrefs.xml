@@ -1,7 +1,8 @@
 ﻿<Properties StartupConfiguration="{49431496-BFB7-6754-4C96-D78A8724F768}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/tsunami/Router.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/tsunami/RouterTransition.cs">
     <Files>
-      <File FileName="Assets/tsunami/Router.cs" Line="12" Column="1" />
+      <File FileName="Assets/tsunami/Router.cs" Line="24" Column="36" />
+      <File FileName="Assets/tsunami/RouterTransition.cs" Line="33" Column="12" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -9,7 +10,9 @@
           <Node name="tsunami-c-sharp-unity" expanded="True">
             <Node name="Assets" expanded="True">
               <Node name="tsunami" expanded="True">
-                <Node name="Router.cs" selected="True" />
+                <Node name="animation" expanded="True" />
+                <Node name="utils" expanded="True" />
+                <Node name="RouterTransition.cs" selected="True" />
               </Node>
             </Node>
           </Node>

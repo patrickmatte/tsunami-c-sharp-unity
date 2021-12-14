@@ -22,7 +22,14 @@ public interface IBranch {
 		set;
 	}
 
-	string path {
+	string path
+	{
+		get;
+		set;
+	}
+
+	string defaultChild
+	{
 		get;
 		set;
 	}

@@ -1,15 +1,17 @@
 ﻿using System.Collections.Generic;
 
-public class Branch:IBranch {
+public class Branch:EventDispatcher, IBranch {
 
-	protected Router _router;
-	protected IBranch _root;
-	protected IBranch _parent;
-	protected string _slug;
-	protected string _path;
+	protected Router _router = null;
+	protected IBranch _root = null;
+	protected IBranch _parent = null;
+	protected string _slug = null;
+	protected string _path = null;
+	protected string _defaultChild = null;
 	public Dictionary<string, IBranch> Branches;
 
-	public Branch(Dictionary<string, IBranch> branches = null) {
+	public Branch(Dictionary<string, IBranch> branches = null) : base()
+	{
 		Branches = branches ?? new Dictionary<string, IBranch>();
 	}
 
@@ -60,6 +62,19 @@ public class Branch:IBranch {
 
 		set {
 			_slug = value;
+		}
+	}
+
+	public virtual string defaultChild
+	{
+		get
+		{
+			return _defaultChild;
+		}
+
+		set
+		{
+			_defaultChild = value;
 		}
 	}
 

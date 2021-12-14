@@ -7,40 +7,42 @@ public class RouterTransition {
 	public List<RouterTask> tasks = new List<RouterTask>();
 	public Router router;
 	public string name;
-	public Action onComplete;
 
-	public RouterTransition(Router router, string name, Action onComplete) {
+	public RouterTransition(Router router, string name) {
 		this.router = router;
 		this.name = name;
-		this.onComplete = onComplete;
 	}
 
-	public void start() {
+	public Promise start() {
+		Promise promise = Promise.Resolve();
 		if (branches.Count > 0) {
-			RouterTask nextTask = null;
-			for (int i = tasks.Count - 1; i > -1; i--) {
-				RouterTask task = tasks[i];
-				task.router = router;
-				task.branches = new List<IBranch> ();
-				foreach (IBranch branch in branches) {
-					task.branches.Add(branch);
+			promise = new Promise((resolve, reject) =>
+			{
+				RouterTask nextTask = null;
+				for (int i = tasks.Count - 1; i > -1; i--)
+				{
+					RouterTask task = tasks[i];
+					task.router = router;
+					task.branches = new List<IBranch>();
+					foreach (IBranch branch in branches)
+					{
+						task.branches.Add(branch);
+					}
+					if (nextTask != null)
+					{
+						task.onComplete = nextTask.start;
+					}
+					else
+					{
+						task.onComplete = resolve;
+					}
+					nextTask = task;
 				}
-				if (nextTask != null) {
-					task.onComplete = nextTask.start;
-				} else {
-					task.onComplete = tasksComplete;
-				}
-				nextTask = task;
-			}
-			RouterTask firstTask = tasks[0];
-			firstTask.start();
-		} else {
-			tasksComplete();
+				RouterTask firstTask = tasks[0];
+				firstTask.start();
+			});
 		}
-	}
-
-	public void tasksComplete() {
-		onComplete();
+		return promise;
 	}
 
 }

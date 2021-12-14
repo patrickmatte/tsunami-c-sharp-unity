@@ -8,7 +8,7 @@ public class RouterTask {
 	public Router router = null;
 	public string name;
 	public bool preload;
-	public Action onComplete;
+	public Action<object> onComplete;
 
 	private IBranch branch;
 
@@ -17,7 +17,7 @@ public class RouterTask {
 		this.preload = preload;
 	}
 
-	public void start() {
+	public void start(object val = null) {
 		//this.preloader = null;
 		//this.assets = [];
 		if (branches.Count > 0) {
@@ -110,7 +110,7 @@ public class RouterTask {
 		//this.assets = null;
 		//this.assetList = null;
 		branches = null;
-		onComplete();
+		onComplete(null);
 	}
 
 }
