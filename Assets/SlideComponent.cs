@@ -90,7 +90,7 @@ public class SlideComponent : MonoBehaviour {
 
 		tween.Start();
 
-		return Promise.Resolve();
+		return null;
 	}
 
 	public Promise zoomOut() {
@@ -107,7 +107,7 @@ public class SlideComponent : MonoBehaviour {
 
 		tween.Start();
 
-		return Promise.Resolve();
+		return null;
 	}
 
 }

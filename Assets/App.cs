@@ -31,7 +31,7 @@ public class App : MonoBehaviour {
 			pods.Add (pod);
 		}
 
-		pods [0].router.location = "gallery/slide-2";
+		pods [0].router.location = "home";
 		pods [1].router.location = "home";
 		pods [2].router.location = "home";
 		pods [3].router.location = "home";

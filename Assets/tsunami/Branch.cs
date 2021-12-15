@@ -79,16 +79,20 @@ public class Branch:EventDispatcher, IBranch {
 	}
 
 	public virtual IBranch getBranch(string slug) {
-		IBranch branch = Branches[slug];
-		if (branch == null)
+		IBranch branch = null;
+		if(Branches.ContainsKey(slug))
+		{
+			branch = Branches[slug];
+		}
+		else if (Branches.ContainsKey("*"))
 		{
 			branch = Branches["*"];
 		}
-		if (branch == null)
-		{
-			branch = new Branch() as IBranch;
-		}
-		return branch;
+        if (branch == null)
+        {
+            branch = new Branch() as IBranch;
+        }
+        return branch;
 	}
 
 	public virtual Promise load() {

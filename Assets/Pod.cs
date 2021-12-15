@@ -73,7 +73,7 @@ public class GalleryBranch:HomeBranch {
 
 	public GalleryBranch()
     {
-		//Branches.Add("*", new SlideBranch());
+        Branches.Add("*", new SlideBranch());
     }
 
 	protected override void startClickHandler() {
@@ -124,11 +124,6 @@ public class GalleryBranch:HomeBranch {
 		base.hide();
 		return pod.podComponent.galleryComponent.hide();
 	}
-
-    public override IBranch getBranch(string slug)
-    {
-        return new SlideBranch();
-    }
 
 }
 

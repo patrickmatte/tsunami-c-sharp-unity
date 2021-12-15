@@ -3,10 +3,12 @@
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="tsunami-c-sharp-unity" expanded="True" selected="True">
+          <Node name="tsunami-c-sharp-unity" expanded="True">
             <Node name="Assets" expanded="True">
               <Node name="tsunami" expanded="True">
-                <Node name="animation" expanded="True" />
+                <Node name="animation" expanded="True">
+                  <Node name="Clock.cs" selected="True" />
+                </Node>
                 <Node name="promises" expanded="True" />
               </Node>
             </Node>
@@ -17,7 +19,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="790a549d-bab5-4ef9-8508-71b5f30f4a6f" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="320cec7f-b7ce-4fe6-a644-9cb5c18ac021" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
